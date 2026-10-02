@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tuempresa.ejercicioconexionbd.controller.LibroController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <GridPane hgap="10.0" vgap="10.0">
+        <!-- El ID ahora se muestra deshabilitado porque es automático -->
+        <Label text="ID (Automático):" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="txtId" disable="true" promptText="Auto-generado" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Título:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="txtTitulo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Autor:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="txtAutor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <!-- Categoría ahora es ComboBox -->
+        <Label text="Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <ComboBox fx:id="cmbCategoria" promptText="Selecciona una categoría" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Ficción" />
+                    <String fx:value="No Ficción" />
+                    <String fx:value="Ciencia" />
+                    <String fx:value="Historia" />
+                    <String fx:value="Tecnología" />
+                    <String fx:value="Fantasía" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <Label text="Precio:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="txtPrecio" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <TextField fx:id="txtStock" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+
+    <HBox spacing="10.0">
+        <Button fx:id="guardarLibro" onAction="#clickGuardar" text="Guardar Libro" />
+        <Button fx:id="limpiarCampos" onAction="#clickLimpiar" text="Limpiar Campos" />
+        <Button fx:id="cargarLibros" onAction="#clickActualizar" text="Actualizar Libros" />
+    </HBox>
+
+    <TableView fx:id="tblLibro" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="50" text="ID" />
+            <TableColumn fx:id="colTitulo" prefWidth="150" text="Título" />
+            <TableColumn fx:id="colAutor" prefWidth="120" text="Autor" />
+            <TableColumn fx:id="colCategoria" prefWidth="100" text="Categoría" />
+            <TableColumn fx:id="colPrecio" prefWidth="80" text="Precio" />
+            <TableColumn fx:id="colStock" prefWidth="60" text="Stock" />
+        </columns>
+    </TableView>
+</VBox>
